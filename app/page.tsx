@@ -1,101 +1,104 @@
+"use client"
 import Image from "next/image";
+import { PhoneIcon, EnvelopeIcon} from "@heroicons/react/16/solid";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Separator } from "../components/ui/separator";
+import Link from "next/link";
+import { Github, Linkedin, TwitterIcon } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faGoogle} from "@fortawesome/free-brands-svg-icons"
 
+const services = [
+  {
+    title: "Responsive Design",
+    description: "Building responsive, mobile-friendly websites and applications that work seamlessly on all screen sizes, from desktops to smartphones",
+  },
+  {
+    title: "Single Page Application (SPA) Development",
+    description: "Creating fast and responsive SPAs using frameworks using React. Ensuring smooth, app-like experiences for users."
+  },
+  {
+    title: "Frontend Optimization",
+    description: "Optimizing the front end for performance, including image optimization, lazy loading, code splitting, and minimizing load times for a better user experience."
+  }
+]
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="flex flex-col items-center bg-gray-100 p-6 text-gray-800 ">
+      {/* Profile Image and Basic Info */}
+      <div className="text-center w-full">
+        <Image 
+          src="/profile.jpeg" 
+          alt="Profile Image" 
+          height={300} 
+          width={300} 
+          className="rounded-full shadow-lg mb-4 w-[300px] h-[300px] mx-auto mt-10"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <h1 className="text-2xl font-bold">Front-end Developer (Next.js)</h1>
+        <p className="text-gray-600">Kaduna, Kaduna State, Nigeria</p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Contact Info */}
+      <div className="flex gap-6 mt-4 text-gray-700">
+        <div className="flex items-center gap-2">
+          <PhoneIcon className="w-5 h-5 text-gray-500" />
+          <span>+2348025347934</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="flex items-center gap-2">
+          <EnvelopeIcon className="w-5 h-5 text-gray-500" />
+          <span>oluwidaad@gmail.com</span>
+        </div>
+      </div>
+
+      {/* About Me Section */}
+      <section className="mt-8 max-w-[700px]">
+      <h2 className="text-2xl font-semibold mb-2 text-center ">About Me</h2>
+        <p className="text-gray-700 text-justify leading-relaxed lg:text-2xl md:text-lg text-[16px]">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Facere perferendis excepturi non iusto, asperiores natus minima aspernatur repellat quia ex, quod incidunt, 
+          id blanditiis laudantium modi dolorum nihil quam commodi! Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Facere perferendis excepturi non iusto, asperiores natus minima aspernatur repellat quia 
+          ex, quod incidunt, id blanditiis laudantium modi dolorum nihil quam commodi!
+        </p>
+      </section>
+      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
+      {/**Services and Expertise */}
+      <section className="flex flex-col mt-10">
+        <h2 className="text-2xl font-semibold mb-2 text-center ">Services</h2>
+        <span className="lg:flex grid w-full lg:gap-10 gap-5 ">
+        {services.map((service, key)=>
+          <Card key={key} className="bg-white shadow-lg rounded-lg p-6 max-w-sm mx-auto md:max-w-md lg:max-w-lg transition-transform transform hover:scale-105">
+          <CardTitle className="text-xl font-semibold text-gray-800 mb-2 text-center">
+            {service.title}
+          </CardTitle>
+          <CardContent className="text-gray-600 text-center text-md sm:text-base md:text-lg leading-relaxed">
+            {service.description}
+            </CardContent>
+        </Card>
+        )}
+        </span>
+      </section>
+      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
+
+      {/**Connect with me section */}
+      <h2 className="text-2xl font-semibold mb-2 text-center mt-10">Connect with me</h2>
+      <section className="flex w-full items-center justify-center gap-10">
+        <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
+          <Link href={"https://x.com/yahya_ridwan"}><TwitterIcon /></Link>
+        </div>
+        <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
+          <Link href={"https://www.linkedin.com/in/ridwan-yahya-14643122b/"}><Linkedin /></Link>
+        </div>
+        <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
+          <Link href={"https://github.com/ridwanyah24"}><Github/></Link>
+        </div>
+        <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
+          <Link href={"oluwidaad@gmail.com"}>
+            <FontAwesomeIcon icon={faGoogle} style={{color:"#ffffff"}} />
+          </Link>
+        </div>
+      </section>
+
     </div>
   );
 }
