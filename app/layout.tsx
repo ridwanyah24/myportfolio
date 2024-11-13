@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Nav/>
-        <span className="p-10">{children}</span>
+        <span className="">{children}</span>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Github, Linkedin, TwitterIcon } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faGoogle} from "@fortawesome/free-brands-svg-icons"
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -20,11 +21,44 @@ const services = [
   {
     title: "Frontend Optimization",
     description: "Optimizing the front end for performance, including image optimization, lazy loading, code splitting, and minimizing load times for a better user experience."
+  },
+  {
+    title: "API Integration",
+    description: "Integrating front-end applications with various APIs, handling data fetching and state management to provide dynamic content and features.",
+  },
+  {
+    title: "Component Library Development",
+    description:"Building reusable and scalable component libraries with frameworks like React or Vue, which help speed up future development and maintain consistency."
+  },
+  {
+    title: "Code Audits and Refactoring",
+    description:"Reviewing and improving existing codebases for readability, performance, scalability, and maintainability."
+  },
+
+]
+
+const stacks = [
+  {
+    title: "JavaScript and React",
+  },
+  {
+   title: "HTML5 and CSS3"
+  },
+  {
+    title: "Version Control with Git"
+  },
+  {
+    title: "State Management (Redux)"
+  },
+  {
+    title: "Tailwind CSS / Styled Components / Sass"
   }
 ]
+
+
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-gray-100 p-6 text-gray-800 ">
+    <div className="flex flex-col items-center bg-gray-200 p-6 text-gray-800">
       {/* Profile Image and Basic Info */}
       <div className="text-center w-full">
         <Image 
@@ -51,21 +85,29 @@ export default function Home() {
       </div>
 
       {/* About Me Section */}
-      <section className="mt-8 max-w-[700px]">
+      <section className="mt-8 w-4/5 mx-auto">
       <h2 className="text-2xl font-semibold mb-2 text-center ">About Me</h2>
-        <p className="text-gray-700 text-justify leading-relaxed lg:text-2xl md:text-lg text-[16px]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Facere perferendis excepturi non iusto, asperiores natus minima aspernatur repellat quia ex, quod incidunt, 
-          id blanditiis laudantium modi dolorum nihil quam commodi! Lorem ipsum dolor sit amet consectetur 
-          adipisicing elit. Facere perferendis excepturi non iusto, asperiores natus minima aspernatur repellat quia 
-          ex, quod incidunt, id blanditiis laudantium modi dolorum nihil quam commodi!
+        <p className="text-gray-500 text-justify leading-relaxed lg:text-xl md:text-lg text-md leading-9">
+        Hello! I&apos;m a passionate front-end developer with a keen eye for creating intuitive, user-friendly, 
+        and visually engaging digital experiences. With a strong foundation in HTML, CSS, 
+        JavaScript, and expertise in frameworks like React and Next.js,
+         I specialize in bringing designs to life in ways that feel natural and seamless for users.
+        I thrive on the challenge of solving complex design problems and optimizing user interfaces to perform smoothly across all devices.
+         My journey in web development has taught me the importance of responsive design, accessibility, 
+        and performance optimization, which I apply to every project I undertake.
+        In addition to my technical skills, I enjoy collaborating with designers, back-end developers,
+         and other stakeholders to ensure a cohesive and consistent user experience. Whether it&apos;s building a dynamic 
+         single-page application or refining an existing UI, I&apos;m dedicated to crafting solutions that are not only functional but also delightful to use.
+        In my free time, I stay engaged with the latest trends in web development, continuously learning new technologies and approaches to improve my work. 
+        I&apos;m excited to bring my skills and passion for front-end development to projects that make a meaningful impact.
         </p>
       </section>
       <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
+
       {/**Services and Expertise */}
       <section className="flex flex-col mt-10">
         <h2 className="text-2xl font-semibold mb-2 text-center ">Services</h2>
-        <span className="lg:flex grid w-full lg:gap-10 gap-5 ">
+        <span className="grid grid-cols-1 lg:grid-cols-3 w-full lg:gap-10 gap-5 ">
         {services.map((service, key)=>
           <Card key={key} className="bg-white shadow-lg rounded-lg p-6 max-w-sm mx-auto md:max-w-md lg:max-w-lg transition-transform transform hover:scale-105">
           <CardTitle className="text-xl font-semibold text-gray-800 mb-2 text-center">
@@ -80,6 +122,21 @@ export default function Home() {
       </section>
       <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
 
+      {/**Tech Stack */}
+      <section className="flex flex-col mt-10">
+        <h2 className="text-2xl font-semibold mb-2 text-center ">Tech Stack</h2>
+        <span className="grid-cols-2 lg:flex w-full lg:gap-10 gap-5 w-full ">
+        {stacks.map((service, key)=>
+          <Card key={key} className="flex justify-center items-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
+            <p className="text-gray-600 font-semibold text-center text-md sm:text-base md:text-lg leading-relaxed">
+            {service.title}
+            </p>
+        </Card>
+        )}
+        </span>
+      </section>
+
+      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
       {/**Connect with me section */}
       <h2 className="text-2xl font-semibold mb-2 text-center mt-10">Connect with me</h2>
       <section className="flex w-full items-center justify-center gap-10">
@@ -93,12 +150,16 @@ export default function Home() {
           <Link href={"https://github.com/ridwanyah24"}><Github/></Link>
         </div>
         <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
-          <Link href={"oluwidaad@gmail.com"}>
+          <Link href={"mailto:oluwidaad@gmail.com"}>
             <FontAwesomeIcon icon={faGoogle} style={{color:"#ffffff"}} />
           </Link>
         </div>
       </section>
-
+      <h2 className="text-2xl font-semibold mb-2 text-center mt-10">My CV</h2>
+      <span className="flex w-full justify-center gap-10 mt-5">
+        <Button variant={"default"} className="w-[200px] h-[40px] text-lg">Download CV</Button>
+        <Button variant={"default"} className="w-[200px] h-[40px] text-lg">View CV</Button>
+      </span>
     </div>
   );
 }
