@@ -12,7 +12,7 @@ export default function Nav() {
     return (
         <nav className="bg-gray-800 text-white p-4 w-full">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-xl font-bold">Yahya Ridwan Adesina</h1>
+                <Link href={"/"}><h1 className="text-xl font-bold">Yahya Ridwan Adesina</h1> </Link>
                 <div className='md:grid'>
                     <button 
                         className="md:hidden text-white text-2xl focus:outline-none" 

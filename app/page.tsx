@@ -87,7 +87,7 @@ export default function Home() {
       {/* About Me Section */}
       <section className="mt-8 w-4/5 mx-auto">
       <h2 className="text-2xl font-semibold mb-2 text-center ">About Me</h2>
-        <p className="text-gray-500 text-justify leading-relaxed lg:text-xl md:text-lg text-md leading-9">
+        <p className="text-gray-500 text-justify leading-relaxed lg:text-xl md:text-lg text-md lg:leading-9">
         Hello! I&apos;m a passionate front-end developer with a keen eye for creating intuitive, user-friendly, 
         and visually engaging digital experiences. With a strong foundation in HTML, CSS, 
         JavaScript, and expertise in frameworks like React and Next.js,
@@ -97,8 +97,10 @@ export default function Home() {
         and performance optimization, which I apply to every project I undertake.
         In addition to my technical skills, I enjoy collaborating with designers, back-end developers,
          and other stakeholders to ensure a cohesive and consistent user experience. Whether it&apos;s building a dynamic 
-         single-page application or refining an existing UI, I&apos;m dedicated to crafting solutions that are not only functional but also delightful to use.
-        In my free time, I stay engaged with the latest trends in web development, continuously learning new technologies and approaches to improve my work. 
+         single-page application or refining an existing UI, 
+         I&apos;m dedicated to crafting solutions that are not only functional but also delightful to use.
+        In my free time, I stay engaged with the latest trends in web development, 
+        continuously learning new technologies and approaches to improve my work. 
         I&apos;m excited to bring my skills and passion for front-end development to projects that make a meaningful impact.
         </p>
       </section>
