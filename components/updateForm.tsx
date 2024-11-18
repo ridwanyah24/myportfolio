@@ -25,16 +25,19 @@ const updateSchema = z.object({
           projectDescription: z
             .string({ message: "Enter project description" })
             .min(200, { message: "Minimum of 200 characters" }),
+        projectFile: z.union([
+          z.instanceof(File, { message: "Upload a valid image file" }),
+          z.string({ message: "Provide a valid image URL" }),
+        ])
         })
-      )
-      .min(1, { message: "At least one project is required" }),
+      ).min(1, { message: "At least one project is required" }).optional(),
     works: z.array(
         z.object({
             companyName: z.string({message: "Enter company Name"}),
             workDescription: z.string({message: "enter work description"}).
             min(200, {message:'minimum of 200 characters'}),
         })
-    )
+    ).optional()
 });
   
 type UpdateFormValues = z.infer<typeof updateSchema>;
@@ -47,7 +50,8 @@ export default function UpdatePortfolioForm() {
           {
             projectName: "",
             projectDescription: "",
-            projectUrl: ""
+            projectUrl: "",
+            projectFile: ""
           },
         ],
         works : [
@@ -145,6 +149,33 @@ export default function UpdatePortfolioForm() {
                   </FormItem>
                 )}
               />
+
+              {/* Project Image */}
+            <FormField
+                control={form.control}
+                name={`projects.${index}.projectFile`}
+                render={({ field }) => (
+                <FormItem>
+                <FormLabel className="text-gray-700 font-semibold">Project Image</FormLabel>
+                <FormControl>
+                    <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        if (e.target.files && e.target.files[0]) {
+                        field.onChange(e.target.files[0]);
+                        }
+                    }}
+                    className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    />
+                </FormControl>
+                <FormDescription className="text-gray-500 text-sm">
+                    Upload an image for your project.
+                </FormDescription>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
               <Button
                 variant="ghost"
                 type="button"
@@ -217,7 +248,7 @@ export default function UpdatePortfolioForm() {
             variant="ghost"
             type="button"
             onClick={() =>
-              appendProject({ projectName: "", projectDescription: "", projectUrl: "" })
+              appendProject({ projectName: "", projectDescription: "", projectUrl: "", projectFile: "" })
             }
             className="flex items-center space-x-2 text-blue-500 hover:text-blue-600"
           >
