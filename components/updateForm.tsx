@@ -15,19 +15,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from './ui/button'
 import { Textarea } from './ui/textarea'
 
-// const updateSchema = z.object({
-//     projectName: z.string({message:"enter project Name"}).min(2, {message:"Enter a project Name"}),
-//     projectDescription: z.string({message:"enter project description"}).min(200, {message: "minimum of 200 characters"}),
-//     companyName: z.string({message:"enter company Name"}).min(2, {message:"Enter the organization name"}),
-//     workDescription: z.string().min(2, {message:"enter work description"}),
-//     linkToProject: z.string(),
-//     projectImage: z
-//     .union([
-//       z.instanceof(File, { message: "Upload a valid image file" }),
-//       z.string({ message: "Provide a valid image URL" }),
-//     ])
-//     .optional(),
-// })
 
 const updateSchema = z.object({
     projects: z
