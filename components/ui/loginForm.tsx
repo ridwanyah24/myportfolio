@@ -1,7 +1,7 @@
 'use client'
 import {z} from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Eye, RotateCw } from "lucide-react";
+import { RotateCw } from "lucide-react";
 import {
     Form,
     FormControl,
@@ -28,7 +28,7 @@ const loginSchema = z.object({
 })
 
 export function LoginForm(){
-    const [login, {isLoading, error}] = useLoginMutation();
+    const [login, {isLoading, }] = useLoginMutation();
     const dispatch = useAppDispatch();
     const {toast} = useToast();
     const router = useRouter();
@@ -41,7 +41,7 @@ export function LoginForm(){
         }
     })
     
-    function onSubmit(data: z.infer<typeof loginSchema>, e:any){
+    function onSubmit(data: z.infer<typeof loginSchema>, e: any){
       e.preventDefault();
       const request = login(data)
         .unwrap()
@@ -67,6 +67,7 @@ export function LoginForm(){
                 action: <ToastAction altText='try again'>Try again</ToastAction>
             })
         })
+        console.log(request);
     }
     return(
         <>

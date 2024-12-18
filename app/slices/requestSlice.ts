@@ -1,9 +1,7 @@
 import { RootState } from "../../store/store";
 
 import {
-    BaseQueryFn, 
-    EndpointBuilder, 
-    EndpointDefinitions, 
+    BaseQueryFn,  
     FetchArgs,
     FetchBaseQueryError,
     createApi,
@@ -11,7 +9,7 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { ApiResponse, AuthResponse } from "../types/authtype";
 
-import { logout, setCredentials, updateCurrentUser } from "./authSlice";
+import { logout, setCredentials, } from "./authSlice";
 import { clearCookie, createCookie } from "../utils/cookies";
 
 
