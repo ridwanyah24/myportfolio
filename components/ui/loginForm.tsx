@@ -41,7 +41,7 @@ export function LoginForm(){
         }
     })
     
-    function onSubmit(data: z.infer<typeof loginSchema>, e: any){
+    async function onSubmit(data: z.infer<typeof loginSchema>, e: any){
       e.preventDefault();
       const request = login(data)
         .unwrap()
