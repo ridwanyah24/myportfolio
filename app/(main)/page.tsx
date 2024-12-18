@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { PhoneIcon, EnvelopeIcon} from "@heroicons/react/16/solid";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Separator } from "../components/ui/separator";
+import { Separator } from "../../components/ui/separator";
 import Link from "next/link";
 import { Github, Linkedin, TwitterIcon } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

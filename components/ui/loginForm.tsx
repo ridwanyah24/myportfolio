@@ -1,6 +1,7 @@
 'use client'
 import {z} from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Eye, RotateCw } from "lucide-react";
 import {
     Form,
     FormControl,
@@ -13,13 +14,25 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from './button'
 import { useForm } from 'react-hook-form'
-
+import { useLoginMutation } from '@/app/slices/requestSlice'
+import { useAppDispatch } from '@/hooks/react-hoot'
+import { useToast } from '@/hooks/use-toast'
+import { useRouter } from 'next/navigation'
+import { setCredentials } from '@/app/slices/authSlice'
+import { createCookie } from '@/app/utils/cookies'
+import { ToastAction } from '@radix-ui/react-toast'
+import { Toaster } from './toaster'
 const loginSchema = z.object({
     email: z.string().email({message: "enter your email"}),
     password: z.string().min(8, {message: "password must be greater than 8 charcaters"}).max(10, {message: "password must not be greater than 10 characters"})
 })
 
 export function LoginForm(){
+    const [login, {isLoading, error}] = useLoginMutation();
+    const dispatch = useAppDispatch();
+    const {toast} = useToast();
+    const router = useRouter();
+    
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -28,11 +41,36 @@ export function LoginForm(){
         }
     })
     
-    function onSubmit(values: z.infer<typeof loginSchema>){
-        console.log(values);
+    function onSubmit(data: z.infer<typeof loginSchema>, e:any){
+      e.preventDefault();
+      const request = login(data)
+        .unwrap()
+        .then(async (originalPromiseResult) =>{
+            toast({
+                variant: "success",
+                description: "login Succesful;"
+            });
+            dispatch(
+                setCredentials({...originalPromiseResult?.data, isAuth: true})
+            );
+            createCookie("accessToken", originalPromiseResult?.data?.accessToken, {
+                path: "/",
+                expires: 7,
+                secure: true,
+            });
+            router.push("/updatePortfolio")
+        }).catch((rejectedValueOrSerializeError)=>{
+            toast({
+                variant: "destructive",
+                title: "Uh Oh! something went wrong. ",
+                description: rejectedValueOrSerializeError?.data?.message,
+                action: <ToastAction altText='try again'>Try again</ToastAction>
+            })
+        })
     }
-
     return(
+        <>
+        <Toaster />
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <FormField
@@ -77,11 +115,22 @@ export function LoginForm(){
                     </FormItem>
                 )}
                 />
-                <Button type="submit" variant="default" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all">
-                Submit
+                <Button 
+                type="submit" 
+                variant="default" 
+                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-all"
+                disabled={isLoading}
+                >
+                 <RotateCw 
+                 className={`mr-2 h-4 w-4 animate-spin ${
+                    isLoading ? "block" : "hidden"
+                  } `}
+                 />
+                Login
                 </Button>
             </form>
         </Form>
+        </>
     )
 }
 

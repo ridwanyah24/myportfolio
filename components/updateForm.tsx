@@ -268,8 +268,8 @@ export default function UpdatePortfolioForm() {
               />
             </svg>
           </Button>
-
-        <Button
+          
+          <Button
             variant="ghost"
             type="button"
             onClick={() =>
@@ -293,7 +293,6 @@ export default function UpdatePortfolioForm() {
               />
             </svg>
           </Button>
-
           <Button type="submit" variant="default" className="w-full">
             Submit
           </Button>
