@@ -14,25 +14,28 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from './button'
 import { useForm } from 'react-hook-form'
-import { useLoginMutation } from '@/app/slices/requestSlice'
-import { useAppDispatch } from '@/hooks/react-hoot'
+import { useLoginMutation } from '@/slices/requestSlice'
+import { useAppDispatch, useAppSelector } from '@/hooks/react-hoot'
 import { useToast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation'
-import { setCredentials } from '@/app/slices/authSlice'
+import { selectCurrentUserToken, setAuthData } from '@/slices/authSlice'
 import { createCookie } from '@/app/utils/cookies'
 import { ToastAction } from '@radix-ui/react-toast'
 import { Toaster } from './toaster'
+
+
 const loginSchema = z.object({
     email: z.string().email({message: "enter your email"}),
     password: z.string().min(8, {message: "password must be greater than 8 charcaters"}).max(10, {message: "password must not be greater than 10 characters"})
 })
 
 export function LoginForm(){
+    const selectToken = useAppSelector(selectCurrentUserToken);
     const [login, {isLoading, }] = useLoginMutation();
     const dispatch = useAppDispatch();
     const {toast} = useToast();
     const router = useRouter();
-    
+
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -40,25 +43,33 @@ export function LoginForm(){
             password : ""
         }
     })
-    
+
     async function onSubmit(data: z.infer<typeof loginSchema>, e: any){
       e.preventDefault();
-      const request = login(data)
+      const formData = new FormData();
+      
+      formData.append("email", data?.email);
+      formData.append("password", data?.password);
+
+      const request = login(formData)
         .unwrap()
         .then(async (originalPromiseResult) =>{
+            console.log("firstStage")
+            console.log(originalPromiseResult);
+            
             toast({
                 variant: "success",
-                description: "login Succesful;"
+                description: "login Succesfull;"
             });
             dispatch(
-                setCredentials({...originalPromiseResult?.data, isAuth: true})
+                setAuthData({access_token:originalPromiseResult?.access_token, status:originalPromiseResult?.status})
             );
-            createCookie("accessToken", originalPromiseResult?.data?.accessToken, {
+            createCookie("accessToken", originalPromiseResult?.access_token, {
                 path: "/",
                 expires: 7,
                 secure: true,
             });
-            router.push("/updatePortfolio")
+            router.push("/updatePortfolio");
         }).catch((rejectedValueOrSerializeError)=>{
             toast({
                 variant: "destructive",
@@ -67,8 +78,9 @@ export function LoginForm(){
                 action: <ToastAction altText='try again'>Try again</ToastAction>
             })
         })
-        console.log(request);
     }
+    console.log(selectToken);
+    
     return(
         <>
         <Toaster />

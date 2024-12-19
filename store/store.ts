@@ -1,19 +1,35 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "@/app/slices/authSlice"
-import {request} from "@/app/slices/requestSlice"
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import authReducer from "@/slices/authSlice"
+import {request} from "@/slices/requestSlice"
+import {persistStore, persistReducer} from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
-export const makeStore = () => {
-    return configureStore({
-      reducer: {
-        auth: authReducer,
-        [request.reducerPath]: request.reducer
-      },
+
+const reducers = combineReducers({
+  auth: authReducer,
+  [request.reducerPath]: request.reducer,
+})
+
+const persistConfig = {
+key: "root",
+storage,
+whiteList: ["auth"],
+blacklist: [request.reducerPath],
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+export const makeStore = configureStore({
+      reducer:persistedReducer,
       middleware: (getDefaultMiddleWare)=>
-        getDefaultMiddleWare().concat(request.middleware),
+        getDefaultMiddleWare({serializableCheck: false,}).concat(request.middleware),
     })
-  }
+  
 
-export type AppStore = ReturnType<typeof makeStore>;
 
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch'];
+
+export type AppStore = ReturnType<typeof makeStore.getState>;
+
+export type RootState =  ReturnType<typeof makeStore.getState>
+export type AppDispatch = typeof makeStore.dispatch;
+
+export const persistor = persistStore(makeStore);
