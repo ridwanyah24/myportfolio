@@ -51,7 +51,7 @@ const stacks = [
     title: "State Management (Redux)"
   },
   {
-    title: "Tailwind CSS / Styled Components / Sass"
+    title: "Tailwind CSS / Styled Components / SCSS"
   }
 ]
 
@@ -105,6 +105,22 @@ export default function Home() {
         </p>
       </section>
       <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
+    
+      {/**Tech Stack */}
+      <section className="flex flex-col mt-10">
+        <h2 className="text-2xl font-semibold mb-2 text-center ">Tech Stack</h2>
+        <span className="grid-cols-2 lg:flex w-full lg:gap-10 gap-5 w-full ">
+        {stacks.map((service, key)=>
+          <Card key={key} className="flex justify-center items-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
+            <p className="text-gray-600 font-semibold text-center text-md sm:text-base md:text-lg leading-relaxed">
+            {service.title}
+            </p>
+        </Card>
+        )}
+        </span>
+      </section>
+
+      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
 
       {/**Services and Expertise */}
       <section className="flex flex-col mt-10">
@@ -124,21 +140,7 @@ export default function Home() {
       </section>
       <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
 
-      {/**Tech Stack */}
-      <section className="flex flex-col mt-10">
-        <h2 className="text-2xl font-semibold mb-2 text-center ">Tech Stack</h2>
-        <span className="grid-cols-2 lg:flex w-full lg:gap-10 gap-5 w-full ">
-        {stacks.map((service, key)=>
-          <Card key={key} className="flex justify-center items-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
-            <p className="text-gray-600 font-semibold text-center text-md sm:text-base md:text-lg leading-relaxed">
-            {service.title}
-            </p>
-        </Card>
-        )}
-        </span>
-      </section>
 
-      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
       {/**Connect with me section */}
       <h2 className="text-2xl font-semibold mb-2 text-center mt-10">Connect with me</h2>
       <section className="flex w-full items-center justify-center gap-10">
@@ -159,8 +161,12 @@ export default function Home() {
       </section>
       <h2 className="text-2xl font-semibold mb-2 text-center mt-10">My CV</h2>
       <span className="flex w-full justify-center gap-10 mt-5">
-        <Button variant={"default"} className="w-[200px] h-[40px] text-lg">Download CV</Button>
-        <Button variant={"default"} className="w-[200px] h-[40px] text-lg">View CV</Button>
+        <a href={"/RidwanCv1.pdf"} download={"Ridwan_CV.pdf"}>
+          <Button variant={"default"} className="w-[200px] h-[40px] text-lg">Download</Button>
+        </a>
+        <Link href={"/RidwanCv1.pdf"} target="_blank">
+          <Button variant={"default"} className="w-[200px] h-[40px] text-lg">View CV</Button>
+        </Link>
       </span>
     </div>
   );

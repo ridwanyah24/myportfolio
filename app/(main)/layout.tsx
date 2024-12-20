@@ -22,21 +22,15 @@ export const metadata: Metadata = {
   icons: "/letter-r.png"
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`antialiased`}
-      >
       <Providers>
          <Nav/>
          {children}
       </Providers>
-      </body>
-    </html>
   );
 }

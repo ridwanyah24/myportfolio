@@ -1,3 +1,4 @@
+'use client'
 import { RootState } from "../store/store";
 
 import {
@@ -7,14 +8,14 @@ import {
     createApi,
     fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-import { ApiResponse, AuthResponse } from "../types/authtype";
+import { ApiResponse, AuthResponse, GetProjects } from "../types/authtype";
 import { useRouter } from "next/navigation";
 
 import { clearAuthData, setAuthData, } from "./authSlice";
 import { clearCookie, createCookie } from "../app/utils/cookies";
 
 const newBaseQuery = fetchBaseQuery({
-    baseUrl: " https://ridwanyahya-portfolio.onrender.com/",
+    baseUrl: "http://52.23.177.142",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.access_token;
       if (token) {
@@ -85,6 +86,22 @@ export const request = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: [],
   endpoints: (builder) =>({
+    getProjects: builder.query<GetProjects, void>({
+      query(){
+        return{
+          url: '/projects',
+          method: "GET"
+        };
+      }
+    }),
+    serveImage: builder.query<string, string>({
+      query(image){
+        return{
+          url: `/serve-image/${image}`,
+          method: "GET"
+        };
+      }
+    }),
     login: builder.mutation<ApiResponse, any>({
       query(body){
         return{
@@ -112,7 +129,7 @@ export const request = createApi({
           body,
         }
       }
-    })
+    }),
   })
 })
 
@@ -122,4 +139,6 @@ export const {
   useLoginMutation,
   useAddCompanyMutation,
   useAddProjectMutation,
+  useGetProjectsQuery,
+  useServeImageQuery,
 } = request
