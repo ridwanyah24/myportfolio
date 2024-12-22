@@ -15,7 +15,7 @@ import { clearAuthData, setAuthData, } from "./authSlice";
 import { clearCookie, createCookie } from "../app/utils/cookies";
 
 const newBaseQuery = fetchBaseQuery({
-    baseUrl: "http://52.23.177.142",
+    baseUrl: "https://danielolaitan.live:5010",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.access_token;
       if (token) {

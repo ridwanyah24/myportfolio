@@ -66,7 +66,7 @@ export default function Home() {
           alt="Profile Image" 
           height={300} 
           width={300} 
-          className="rounded-full shadow-lg mb-4 w-[300px] h-[300px] mx-auto mt-10"
+          className="rounded-full shadow-lg mb-4 w-[250px] h-[250px] mx-auto mt-10"
         />
         <h1 className="text-2xl font-bold">Front-end Developer (Next.js)</h1>
         <p className="text-gray-600">Kaduna, Kaduna State, Nigeria</p>

@@ -33,7 +33,7 @@ export default function Page() {
 // Separate component to fetch and display the image for each project
 function ProjectCard({ project }: { project: Project }) {
   const { data, isLoading: isImageLoading, isSuccess, isError } = useServeImageQuery(project.image);
-  const baseurl = "http://52.23.177.142"
+  const baseurl = "https://danielolaitan.live:5010"
   if (isSuccess){
     console.log("fetched image sucessfully");
     console.log(data);
@@ -41,7 +41,7 @@ function ProjectCard({ project }: { project: Project }) {
   if(isError) console.log("error");
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-5 lg:w-[1400px]  transition-transform transform hover:scale-105 hover:shadow-xl">
+    <div className="bg-white shadow-lg rounded-lg p-5 lg:w-[1400px] mb-10 transition-transform transform hover:scale-105 hover:shadow-xl">
       {isImageLoading ? (
         <div className="flex items-center justify-center w-full h-64 bg-gray-100 rounded">
           <p className="text-gray-500">Loading image...</p>

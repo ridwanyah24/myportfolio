@@ -36,7 +36,7 @@ const updateSchema = z.object({
           z.string({ message: "Provide a valid image URL" }),
         ])
         })
-      ).min(1, { message: "At least one project is required" }).optional(),
+      ).optional(),
     works: z.array(
         z.object({
             name: z.string({message: "Enter company Name"}),
@@ -142,16 +142,15 @@ export default function UpdatePortfolioForm() {
               description: `Work at "${work.name}" added successfully.`,
             });
           })
-          .catch((error) => {
-            toast({
-              variant: "destructive",
-              title: "Uh oh! Something went wrong.",
-              description: error?.data?.message || "Failed to add work.",
-              action: <ToastAction altText="Try again">Try again</ToastAction>,
-            });
-          })
+        .catch((error) => {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Something went wrong.",
+            description: error?.data?.message || "Failed to add work.",
+            action: <ToastAction altText="Try again">Try again</ToastAction>,
+          });
+        })
       );
-    
       // Wait for all requests to finish
       try {
         await Promise.all([...workRequests, ...projectRequests]);

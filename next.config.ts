@@ -10,8 +10,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "52.23.177.142",
+        protocol: "https",
+        hostname: "danielolaitan.live",
         pathname: "/serve-image/**", // Match the image path
       },
     ]
