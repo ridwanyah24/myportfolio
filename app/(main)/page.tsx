@@ -62,7 +62,7 @@ export default function Home() {
       {/* Profile Image and Basic Info */}
       <div className="text-center w-full">
         <Image 
-          src="/profile.jpeg" 
+          src="/headshot.jpg" 
           alt="Profile Image" 
           height={300} 
           width={300} 
