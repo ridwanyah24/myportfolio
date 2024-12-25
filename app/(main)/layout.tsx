@@ -28,7 +28,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-      <Providers>
+      <Providers >
          <Nav/>
          {children}
       </Providers>
