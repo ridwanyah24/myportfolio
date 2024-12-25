@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       {/* Contact Info */}
-      <div className="flex gap-6 mt-4 text-gray-700">
+      <div className="flex gap-6 mt-4 text-gray-700 p-2">
         <div className="flex items-center gap-2">
           <PhoneIcon className="w-5 h-5 text-gray-500" />
           <span>+2348025347934</span>
@@ -85,7 +85,7 @@ export default function Home() {
       </div>
 
       {/* About Me Section */}
-      <section className="mt-8 w-4/5 mx-auto">
+      <section className="mt-8 lg:w-4/5 lg:mx-auto">
       <h2 className="text-2xl font-semibold mb-2 text-center ">About Me</h2>
         <p className="text-gray-500 text-justify leading-relaxed lg:text-xl md:text-lg text-md lg:leading-9">
         Hello! I&apos;m a passionate front-end developer with a keen eye for creating intuitive, user-friendly, 
