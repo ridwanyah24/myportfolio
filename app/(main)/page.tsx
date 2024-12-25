@@ -120,6 +120,20 @@ export default function Home() {
         </span>
       </section>
 
+      <section className="flex flex-col mt-10 items-center text-center">
+        <h2 className="text-2xl font-semibold mb-4">Explore My Work</h2>
+        <p className="text-lg text-gray-600 mb-6">
+          Dive into the projects I’ve crafted to showcase my expertise and creativity. 
+          Check out the <span className="font-bold text-black">Projects Page</span> for more details.
+        </p>
+        <Link 
+          href="/projects" 
+          className="px-6 py-3 bg-black text-white font-medium rounded-md shadow-md hover:bg-blue-600 transition duration-300"
+        >
+          View Projects
+        </Link>
+      </section>
+
       <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
 
       {/**Services and Expertise */}
