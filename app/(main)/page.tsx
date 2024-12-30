@@ -175,10 +175,10 @@ export default function Home() {
       </section>
       <h2 className="text-2xl font-semibold mb-2 text-center mt-10">My CV</h2>
       <span className="flex w-full justify-center gap-10 mt-5">
-        <a href={"/RidwanCv1.pdf"} download={"Ridwan_CV.pdf"}>
+        <a href={"/cv_latest.pdf"} download={"Ridwan_CV.pdf"}>
           <Button variant={"default"} className="lg:w-[200px] h-[40px] text-lg">Download</Button>
         </a>
-        <Link href={"/RidwanCv1.pdf"} target="_blank">
+        <Link href={"/cv_latest.pdf"} target="_blank">
           <Button variant={"default"} className="lg:w-[200px] h-[40px] text-lg">View CV</Button>
         </Link>
       </span>
