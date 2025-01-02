@@ -20,7 +20,7 @@ export default function Page() {
     <div className="flex flex-col items-center bg-gray-200 p-6 text-gray-800 min-h-screen">
       <p className="text-4xl font-semibold mb-2 text-center">Projects</p>
       <p className="font-semibold mb-2 text-center">Showcasing my Journey in Front-end development</p>
-      <div className="mt-10">
+      <div className="mt-10 ">
         {isSuccess &&
           data?.data?.map((project: any, index: Key | null | undefined) => (
             <ProjectCard key={index} project={project} />
@@ -41,7 +41,7 @@ function ProjectCard({ project }: { project: Project }) {
   if(isError) console.log("error");
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-5 lg:w-[1400px] mb-10 transition-transform transform hover:scale-105 hover:shadow-xl">
+    <div className="bg-white shadow-lg rounded-lg p-5 lg:w-4/5 mx-auto mb-10 transition-transform transform hover:scale-105 hover:shadow-xl">
       {isImageLoading ? (
         <div className="flex items-center justify-center w-full h-64 bg-gray-100 rounded">
           <p className="text-gray-500">Loading image...</p>

@@ -19,10 +19,10 @@ blacklist: [request.reducerPath],
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 export const makeStore = configureStore({
-      reducer:persistedReducer,
-      middleware: (getDefaultMiddleWare)=>
-        getDefaultMiddleWare({serializableCheck: false,}).concat(request.middleware),
-    })
+  reducer:persistedReducer,
+  middleware: (getDefaultMiddleWare)=>
+    getDefaultMiddleWare({serializableCheck: false,}).concat(request.middleware),
+})
   
 
 

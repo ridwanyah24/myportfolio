@@ -85,7 +85,7 @@ export default function Home() {
       </div>
 
       {/* About Me Section */}
-      <section className="mt-8 lg:w-4/5 lg:mx-auto">
+      <section className="mt-8 lg:mx-auto lg:w-4/5">
       <h2 className="text-2xl font-semibold mb-2 text-center ">About Me</h2>
         <p className="text-gray-500 text-justify leading-relaxed lg:text-xl md:text-lg text-md lg:leading-9">
         Hello! I&apos;m a passionate front-end developer with a keen eye for creating intuitive, user-friendly, 
@@ -104,12 +104,12 @@ export default function Home() {
         I&apos;m excited to bring my skills and passion for front-end development to projects that make a meaningful impact.
         </p>
       </section>
-      <Separator className="mt-5 bg-gray-300 w-4/5 mx-auto"/>
+      <Separator className="mt-5 bg-gray-300 mx-auto"/>
     
       {/**Tech Stack */}
       <section className="flex flex-col mt-10">
         <h2 className="text-2xl font-semibold mb-2 text-center ">Tech Stack</h2>
-        <span className="grid-cols-2 lg:flex w-full lg:gap-10 gap-5 w-full ">
+        <span className="flex flex-col lg:flex-row md:flex-row w-full lg:gap-10 gap-5 w-full ">
         {stacks.map((service, key)=>
           <Card key={key} className="flex justify-center items-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
             <p className="text-gray-600 font-semibold text-center text-md sm:text-base md:text-lg leading-relaxed">
@@ -123,7 +123,7 @@ export default function Home() {
       <section className="flex flex-col mt-10 items-center text-center">
         <h2 className="text-2xl font-semibold mb-4">Explore My Work</h2>
         <p className="text-lg text-gray-600 mb-6">
-          Dive into the projects I’ve crafted to showcase my expertise and creativity. 
+          Dive into the projects I&apos;ve crafted to showcase my expertise and creativity. 
           Check out the <span className="font-bold text-black">Projects Page</span> for more details.
         </p>
         <Link 
