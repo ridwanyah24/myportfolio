@@ -159,16 +159,16 @@ export default function Home() {
       <h2 className="text-2xl font-semibold mb-2 text-center mt-10">Connect with me</h2>
       <section className="flex w-full items-center justify-center gap-10">
         <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
-          <Link href={"https://x.com/yahya_ridwan"}><TwitterIcon /></Link>
+          <Link href={"https://x.com/yahya_ridwan"} target="_blank"><TwitterIcon /></Link>
         </div>
         <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
-          <Link href={"https://www.linkedin.com/in/ridwan-yahya-14643122b/"}><Linkedin /></Link>
+          <Link href={"https://www.linkedin.com/in/ridwan-yahya-14643122b/"} target="_blank"><Linkedin /></Link>
         </div>
         <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
-          <Link href={"https://github.com/ridwanyah24"}><Github/></Link>
+          <Link href={"https://github.com/ridwanyah24"} target="_blank"><Github/></Link>
         </div>
         <div className="w-[50px] h-[50px] rounded-md bg-black text-white flex items-center justify-center transition-transform transform hover:scale-105">
-          <Link href={"mailto:oluwidaad@gmail.com"}>
+          <Link href={"mailto:oluwidaad@gmail.com"} target="_blank">
             <FontAwesomeIcon icon={faGoogle} style={{color:"#ffffff"}} />
           </Link>
         </div>
