@@ -4,25 +4,39 @@ import { useGetProjectsQuery, useServeImageQuery } from "@/slices/requestSlice";
 import Image from "next/image";
 import { GetProjects, Project } from "@/types/authtype";
 
+const projects = [
+  {
+    name: "BCA-HealthCare",
+    url: "https://bcahealthcarenetwork.com/",
+    description: "BCA-HealthCare is a healthcare platform connecting patients and providers with features like appointment scheduling and secure communication. Built with Next.js and TypeScript, it ensures high performance, scalability, and type-safe development, delivering a seamless, user-friendly experience tailored to streamline healthcare processes across devices.",
+    image: "/bca.png"
+  },
+  {
+    name: "Acme Dashboard",
+    url: "https://nextjs-dashboard-x33e.vercel.app/dashboard/invoices",
+    description: "",
+    image: "/Acme.png",
+  },
+]
+
 export default function Page() {
   const { data, isLoading, error, isSuccess } = useGetProjectsQuery();
   const baseurl = "http://52.23.177.142"
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading...</p>;
+  // }
 
-  if (error) {
-    console.error("Error fetching projects:", error);
-    return <p>Something went wrong while fetching projects.</p>;
-  }
+  // if (error) {
+  //   console.error("Error fetching projects:", error);
+  //   return <p>Something went wrong while fetching projects.</p>;
+  // }
 
   return (
     <div className="flex flex-col items-center bg-gray-200 p-6 text-gray-800 min-h-screen">
       <p className="text-4xl font-semibold mb-2 text-center">Projects</p>
       <p className="font-semibold mb-2 text-center">Showcasing my Journey in Front-end development</p>
       <div className="mt-10 ">
-        {isSuccess &&
-          data?.data?.map((project: any, index: Key | null | undefined) => (
+        { projects.map((project: any, index: Key | null | undefined) => (
             <ProjectCard key={index} project={project} />
           ))}
       </div>
@@ -32,29 +46,23 @@ export default function Page() {
 
 // Separate component to fetch and display the image for each project
 function ProjectCard({ project }: { project: Project }) {
-  const { data, isLoading: isImageLoading, isSuccess, isError } = useServeImageQuery(project.image);
-  const baseurl = "https://danielolaitan.live:5010"
-  if (isSuccess){
-    console.log("fetched image sucessfully");
-    console.log(data);
-  }
-  if(isError) console.log("error");
+  // const { data, isLoading: isImageLoading, isSuccess, isError } = useServeImageQuery(project.image);
+  // const baseurl = "https://danielolaitan.live:5010"
+  // if (isSuccess){
+  //   console.log("fetched image sucessfully");
+  //   console.log(data);
+  // }
+  // if(isError) console.log("error");
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-5 lg:w-4/5 mx-auto mb-10 transition-transform transform hover:scale-105 hover:shadow-xl">
-      {isImageLoading ? (
-        <div className="flex items-center justify-center w-full h-64 bg-gray-100 rounded">
-          <p className="text-gray-500">Loading image...</p>
-        </div>
-      ) : (
-        <Image
-          src={`${baseurl}/serve-image/${project.image}` || `/profile.jpeg`}
-          alt="Project Image"
-          width={400}
-          height={400}
-          className="w-full h-64 lg:w-fit mx-auto lg:h-[500px] object-fit rounded-md"
-        />
-      )}
+      <Image
+        src={`${project.image}`}
+        alt="Project Image"
+        width={400}
+        height={400}
+        className="w-full h-64 lg:w-fit mx-auto lg:h-[500px] object-fit rounded-md"
+      />
       <div className="mt-4">
         <h3 className="text-xl font-semibold text-gray-800">{project.name}</h3>
         <p className="text-sm text-blue-600 mt-1">
