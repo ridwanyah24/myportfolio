@@ -14,7 +14,7 @@ const projects = [
   {
     name: "Acme Dashboard",
     url: "https://nextjs-dashboard-x33e.vercel.app/dashboard/invoices",
-    description: "",
+    description: "This project is a demo sale invoice dashboard I built which included user authentication.The email is user@nextmail.com and password is 123456",
     image: "/Acme.png",
   },
 ]
