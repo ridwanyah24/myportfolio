@@ -6,6 +6,12 @@ import { GetProjects, Project } from "@/types/authtype";
 
 const projects = [
   {
+    name: "Travel Iten",
+    url: "https://traveliten.vercel.app/",
+    description: "Book for flights, hotels or Tourist attraction in this tourism app called TravelIten!!!",
+    image: "/traveliten.png"
+  },
+  {
     name: "BCA-HealthCare",
     url: "https://bcahealthcarenetwork.com/",
     description: "BCA-HealthCare is a healthcare platform connecting patients and providers with features like appointment scheduling and secure communication. Built with Next.js and TypeScript, it ensures high performance, scalability, and type-safe development, delivering a seamless, user-friendly experience tailored to streamline healthcare processes across devices.",
