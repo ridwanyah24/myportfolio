@@ -129,7 +129,7 @@ export default function UpdatePortfolioForm() {
               description: error?.data?.message || "Failed to add project.",
               action: <ToastAction altText="Try again">Try again</ToastAction>,
             });
-          })
+        })
       );
     
       // Submit works
