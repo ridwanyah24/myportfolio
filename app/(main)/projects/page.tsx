@@ -6,6 +6,12 @@ import { GetProjects, Project } from "@/types/authtype";
 
 const projects = [
   {
+    name: "Ubedu",
+    url: "/https://ubedu.onrender.com/",
+    description: "Ubedu is a school management system web application",
+    image: "/ubedu.png",
+  },
+  {
     name: "Travel Iten",
     url: "https://traveliten.vercel.app/",
     description: "Book for flights, hotels or Tourist attraction in this tourism app called TravelIten!!!",

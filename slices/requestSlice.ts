@@ -12,7 +12,7 @@ import { ApiResponse, AuthResponse, GetProjects } from "../types/authtype";
 import { useRouter } from "next/navigation";
 
 import { clearAuthData, setAuthData, } from "./authSlice";
-import { clearCookie, createCookie } from "../app/utils/cookies";
+// import { clearCookie, createCookie } from "../app/utils/cookies";
 
 const newBaseQuery = fetchBaseQuery({
     baseUrl: "https://danielolaitan.live:5010",
