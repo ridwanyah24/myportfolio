@@ -12,6 +12,12 @@ const projects = [
     image: "/ubedu.png",
   },
   {
+    name: "Ubefu",
+    url: "inprogress",
+    description: "A MOOC platform where users can create courses or watch courses",
+    image: "/dashboard.png"
+  },
+  {
     name: "Travel Iten",
     url: "https://traveliten.vercel.app/",
     description: "Book for flights, hotels or Tourist attraction in this tourism app called TravelIten!!!",
