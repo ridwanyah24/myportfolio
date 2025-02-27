@@ -109,9 +109,9 @@ export default function Home() {
       {/**Tech Stack */}
       <section className="flex flex-col mt-10">
         <h2 className="text-2xl font-semibold mb-2 text-center ">Tech Stack</h2>
-        <span className="flex flex-col lg:flex-row md:flex-row w-full lg:gap-10 gap-5 w-full ">
+        <span className="flex flex-col lg:flex-row md:flex-row lg:gap-10 gap-5 w-full ">
         {stacks.map((service, key)=>
-          <Card key={key} className="flex justify-center items-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
+          <Card key={key} className="flex justify-center bg-white shadow-lg items-center p-6 transition-transform transform hover:scale-105">
             <p className="text-gray-600 font-semibold text-center text-md sm:text-base md:text-lg leading-relaxed">
             {service.title}
             </p>
@@ -178,7 +178,7 @@ export default function Home() {
         <a href={"/cv_latest.pdf"} download={"Ridwan_CV.pdf"}>
           <Button variant={"default"} className="lg:w-[200px] h-[40px] text-lg">Download</Button>
         </a>
-        <Link href={"/cv_latest.pdf"} target="_blank">
+        <Link href={"/ridwan_yahyah-CV-update.pdf"} target="_blank">
           <Button variant={"default"} className="lg:w-[200px] h-[40px] text-lg">View CV</Button>
         </Link>
       </span>
